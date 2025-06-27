@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Action Hub - Environmental Awareness Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="themeToggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-leaf"></i>
+                <span>Climate Action Hub</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
+                <li><a href="#quiz" class="nav-link">Climate Quiz</a></li>
+                <li><a href="#gallery" class="nav-link">Impact Gallery</a></li>
+                <li><a href="#tips" class="nav-link">Action Tips</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section dashboard-section active">
+            <div class="container">
+                <div class="hero">
+                    <h1 class="hero-title">Climate Action Dashboard</h1>
+                    <p class="hero-subtitle">Real-time environmental data and climate awareness tools</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Weather Card -->
+                    <div class="card weather-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-cloud-sun"></i> Current Weather</h3>
+                            <button id="locationBtn" class="location-btn">
+                                <i class="fas fa-map-marker-alt"></i> Get Location
+                            </button>
+                        </div>
+                        <div class="weather-content">
+                            <div class="weather-main">
+                                <div class="temperature" id="temperature">--°</div>
+                                <div class="weather-description" id="weatherDescription">Loading...</div>
+                            </div>
+                            <div class="weather-details">
+                                <div class="weather-item">
+                                    <span class="label">Feels like</span>
+                                    <span class="value" id="feelsLike">--°</span>
+                                </div>
+                                <div class="weather-item">
+                                    <span class="label">Humidity</span>
+                                    <span class="value" id="humidity">--%</span>
+                                </div>
+                                <div class="weather-item">
+                                    <span class="label">Wind</span>
+                                    <span class="value" id="windSpeed">-- km/h</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="location" id="location">Location not set</div>
+                    </div>
+
+                    <!-- Environmental Stats -->
+                    <div class="card stats-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-line"></i> Environmental Impact</h3>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" id="co2Level">421</div>
+                                <div class="stat-label">CO₂ ppm</div>
+                                <div class="stat-trend up">
+                                    <i class="fas fa-arrow-up"></i> +2.1
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="temp-anomaly">+1.2</div>
+                                <div class="stat-label">°C Above Average</div>
+                                <div class="stat-trend up">
+                                    <i class="fas fa-arrow-up"></i> +0.1
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="deforestation">10.2M</div>
+                                <div class="stat-label">Hectares Lost</div>
+                                <div class="stat-trend up">
+                                    <i class="fas fa-arrow-down"></i> -15%
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="renewable-energy">31%</div>
+                                <div class="stat-label">Renewable Energy</div>
+                                <div class="stat-trend down">
+                                    <i class="fas fa-arrow-up"></i> +8%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Climate Tips -->
+                    <div class="card tips-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-lightbulb"></i> Daily Climate Tip</h3>
+                        </div>
+                        <div class="tip-content">
+                            <div class="tip-icon">🌱</div>
+                            <div class="tip-text" id="dailyTip">
+                                Switch to LED light bulbs - they use 75% less energy and last 25 times longer than incandescent bulbs.
+                            </div>
+                            <button class="tip-refresh" id="refreshTip">
+                                <i class="fas fa-refresh"></i> New Tip
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section quiz-section">
+            <div class="container">
+                <div class="quiz-header">
+                    <h2>Climate Knowledge Quiz</h2>
+                    <p>Test your understanding of climate change and environmental issues</p>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">Question 1 of 10</span>
+                    </div>
+
+                    <div class="quiz-content" id="quizContent">
+                        <div class="question-container">
+                            <h3 class="question" id="question">Loading question...</h3>
+                            <div class="options" id="options">
+                                <!-- Options will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-controls">
+                        <button class="quiz-btn secondary" id="prevBtn" disabled>Previous</button>
+                        <button class="quiz-btn primary" id="nextBtn" disabled>Next Question</button>
+                    </div>
+
+                    <div class="quiz-results" id="quizResults" style="display: none;">
+                        <div class="results-content">
+                            <div class="score-circle">
+                                <div class="score-number" id="finalScore">0</div>
+                                <div class="score-total">/ 10</div>
+                            </div>
+                            <h3 class="results-title" id="resultsTitle">Great job!</h3>
+                            <p class="results-message" id="resultsMessage">You have a good understanding of climate issues.</p>
+                            <button class="quiz-btn primary" id="restartQuiz">Take Quiz Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section gallery-section">
+            <div class="container">
+                <div class="gallery-header">
+                    <h2>Climate Change Impact Gallery</h2>
+                    <p>Visual evidence of our changing planet</p>
+                </div>
+
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel">
+                        <div class="carousel-track" id="carouselTrack">
+                            <!-- Images will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev" id="prevSlide">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn next" id="nextSlide">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <!-- Indicators will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="image-info" id="imageInfo">
+                    <h3 id="imageTitle">Select an image to learn more</h3>
+                    <p id="imageDescription">Navigate through the gallery to see the impacts of climate change around the world.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section id="tips" class="section tips-section">
+            <div class="container">
+                <div class="tips-header">
+                    <h2>Climate Action Tips</h2>
+                    <p>Small changes, big impact - Start your climate action journey today</p>
+                </div>
+
+                <div class="tips-grid" id="tipsGrid">
+                    <!-- Tips will be populated by JavaScript -->
+                </div>
+
+                <div class="carbon-calculator">
+                    <h3>Quick Carbon Footprint Calculator</h3>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="transport">Weekly car miles:</label>
+                            <input type="number" id="transport" placeholder="e.g., 100">
+                        </div>
+                        <div class="form-group">
+                            <label for="electricity">Monthly electricity (kWh):</label>
+                            <input type="number" id="electricity" placeholder="e.g., 500">
+                        </div>
+                        <div class="form-group">
+                            <label for="flights">Flights per year:</label>
+                            <input type="number" id="flights" placeholder="e.g., 2">
+                        </div>
+                        <button class="calculate-btn" id="calculateBtn">Calculate Footprint</button>
+                    </div>
+                    <div class="calculator-result" id="calculatorResult" style="display: none;">
+                        <div class="result-value" id="carbonResult">0</div>
+                        <div class="result-label">tons CO₂ per year</div>
+                        <div class="result-comparison" id="resultComparison"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-leaf"></i> Climate Action Hub</h4>
+                    <p>Empowering individuals to take action against climate change through education and awareness.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#quiz">Climate Quiz</a></li>
+                        <li><a href="#gallery">Impact Gallery</a></li>
+                        <li><a href="#tips">Action Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://climate.nasa.gov/" target="_blank">NASA Climate</a></li>
+                        <li><a href="https://www.ipcc.ch/" target="_blank">IPCC Reports</a></li>
+                        <li><a href="https://www.un.org/en/climatechange" target="_blank">UN Climate Action</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Climate Action Hub. Building awareness for a sustainable future. By Surekha Koti</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
